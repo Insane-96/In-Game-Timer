@@ -12,7 +12,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class RenderGameOverlay {	
+public class RenderGameOverlay {
+	public static long realTime;
+	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void onRenderGameOverlay(RenderGameOverlayEvent.Text event) {
@@ -31,7 +33,7 @@ public class RenderGameOverlay {
 				finalString += "In-Game Timer: ";
 			
 			if (Properties.General.showTime)
-				finalString += FormatTime(player.world.getTotalWorldTime());
+				finalString += FormatTime(realTime);
 			
 			if (Properties.General.showTicks)
 				finalString += String.format("(%d)", player.world.getTotalWorldTime());

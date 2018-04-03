@@ -11,12 +11,13 @@ public class Properties {
 		public static boolean showTicks;
 		public static boolean showText;
 		public static boolean showTime;
+		public static int updateRate;
 		
 		public static void Init() {
-			showTicks = Config.LoadBoolProperty("general", "show_ticks", "Makes ticks appear after the time in parenthesis", false);
+			showTicks = Config.LoadBoolProperty("general", "show_ticks", "Makes ticks appear after the time, in parenthesis", false);
 			showText = Config.LoadBoolProperty("general", "show_text", "Shows/Hide the 'In-Game Timer:' text", true);
 			showTime = Config.LoadBoolProperty("general", "show_time", "Shows/Hide HH:MM:SS:DD time", true);
-			
+			updateRate = Config.LoadIntProperty("general", "update_rate", "Every how much ticks (1 second = 20 ticks) should the in-game-timer update?", 1); 
 		}
 	}
 	
