@@ -44,7 +44,7 @@ public class RenderGameOverlay {
 	private static String FormatTime(long time) {
 		int hours = (int) (time / 72000);
 		int minutes = (int) (time / 1200 - (hours * 60));
-		int seconds = (int) (time / 20 - (hours * 1200 + minutes * 60));
+		int seconds = (int) (time / 20 - (hours * 3600 + minutes * 60));
 		int ticks = (int) (time - (hours * 72000 + minutes * 1200 + seconds * 20)) * 5;
 		
 		
