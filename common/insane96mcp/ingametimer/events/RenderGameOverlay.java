@@ -17,7 +17,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber(modid = InGameTimer.MOD_ID)
 public class RenderGameOverlay {
 	public static long time;
-	public static long timeOffset;
 	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent

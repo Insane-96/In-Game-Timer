@@ -18,7 +18,7 @@ public class InGameTimer {
 	
 	public static final String MOD_ID = "ingametimer";
 	public static final String MOD_NAME = "In Game Timer";
-	public static final String VERSION = "1.2.0";
+	public static final String VERSION = "1.3.0";
 	public static final String RESOURCE_PREFIX = MOD_ID.toLowerCase() + ":";
 	public static final String MINECRAFT_VERSIONS = "[1.10,1.12.2]";
 	

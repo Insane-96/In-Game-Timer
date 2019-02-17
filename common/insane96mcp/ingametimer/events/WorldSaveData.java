@@ -54,13 +54,13 @@ public class WorldSaveData extends WorldSavedData {
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
-		setTimeStart(nbt.getLong("timeOffset"));
+		setTimeStart(nbt.getLong("timeStart"));
 		setTimeStop(nbt.getLong("timeStop"));
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		compound.setLong("timeOffset", this.timeStart);
+		compound.setLong("timeStart", this.timeStart);
 		compound.setLong("timeStop", this.timeStop);
 		return compound;
 	}
