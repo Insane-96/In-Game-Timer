@@ -1,14 +1,14 @@
 [
 {
-  "modid": "moreenchantments",
-  "name": "More Enchantments",
-  "description": "Adding more vanilla enchantments",
+  "modid": "ingametimer",
+  "name": "In-Game Timer",
+  "description": "A tool for speedrunners",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://minecraft.curseforge.com/projects/more-enchantments",
+  "url": "https://minecraft.curseforge.com/projects/in-game-timer",
   "updateUrl": "",
   "authorList": ["Insane96MCP"],
-  "credits": "The Forge forum for help :P",
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

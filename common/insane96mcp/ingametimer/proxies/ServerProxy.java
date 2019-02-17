@@ -1,4 +1,4 @@
-package net.insane96mcp.ingametimer.proxies;
+package insane96mcp.ingametimer.proxies;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;

@@ -1,6 +1,6 @@
-package net.insane96mcp.ingametimer.network;
+package insane96mcp.ingametimer.network;
 
-import net.insane96mcp.ingametimer.InGameTimer;
+import insane96mcp.ingametimer.InGameTimer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -12,7 +12,7 @@ public class PacketHandler {
 	private static int discriminator = 0;
 	
 	public static void Init() {
-		INSTANCE.registerMessage(WorldTimeMessageHandler.class, WorldTimeMessage.class, discriminator++, Side.CLIENT);
+		INSTANCE.registerMessage(WorldTimeMessage.Handler.class, WorldTimeMessage.class, discriminator++, Side.CLIENT);
 	}
 	
 	public static void SendToServer(IMessage message) {

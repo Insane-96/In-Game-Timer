@@ -1,19 +1,23 @@
-package net.insane96mcp.ingametimer.events;
+package insane96mcp.ingametimer.events;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import net.insane96mcp.ingametimer.lib.Properties;
+import insane96mcp.ingametimer.InGameTimer;
+import insane96mcp.ingametimer.lib.Properties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@Mod.EventBusSubscriber(modid = InGameTimer.MOD_ID)
 public class RenderGameOverlay {
-	public static long realTime;
+	public static long time;
+	public static long timeOffset;
 	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
@@ -23,19 +27,20 @@ public class RenderGameOverlay {
 		EntityPlayerSP player = mc.player;
 		
 		String finalString = "";
-		if (Properties.RealTime.showRealTime) {
+		if (Properties.config.realTime.showRealTime) {
 			Date date = new Date();
-			DateFormat format = new SimpleDateFormat(Properties.RealTime.format);
+			DateFormat format = new SimpleDateFormat(Properties.config.realTime.format);
 			finalString = format.format(date);
 		}
 		else {
-			if (Properties.General.showText)
+			long actualTime = time - timeOffset;
+			if (Properties.config.general.showText)
 				finalString += "In-Game Timer: ";
 			
-			if (Properties.General.showTime)
-				finalString += FormatTime(realTime);
+			if (Properties.config.general.showTime)
+				finalString += FormatTime(actualTime);
 			
-			if (Properties.General.showTicks)
+			if (Properties.config.general.showTicks)
 				finalString += String.format("(%d)", player.world.getTotalWorldTime());
 		}
 		event.getLeft().add(finalString);
