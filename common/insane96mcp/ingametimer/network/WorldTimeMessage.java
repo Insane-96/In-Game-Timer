@@ -11,30 +11,25 @@ public class WorldTimeMessage implements IMessage {
 	public WorldTimeMessage() { }
 	
 	public long time;
-	public long timeOffset;
-	
-	public WorldTimeMessage(long time, long timeOffset) {
+
+	public WorldTimeMessage(long time) {
 		this.time = time;
-		this.timeOffset = timeOffset;
 	}
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		this.time = buf.readLong();
-		this.timeOffset = buf.readLong();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
 		buf.writeLong(this.time);
-		buf.writeLong(this.timeOffset);
 	}
 
 	public static class Handler implements IMessageHandler<WorldTimeMessage, IMessage>{
 		@Override
 		public IMessage onMessage(WorldTimeMessage message, MessageContext ctx) {
 			RenderGameOverlay.time = message.time;
-			RenderGameOverlay.timeOffset = message.timeOffset;
 			return null;
 		}
 

@@ -36,15 +36,24 @@ public class Properties {
 			@Comment("Every how many ticks (1 second = 20 ticks) should the in-game-timer update?")
 			@RangeInt(min = 1, max = 20)
 			public int updateRate = 1;
-			@Name("Start Timer via Command")
-			@Comment("If enabled the timer will start when the command 'igt:start' is executed instead at the start of the world")
+		}
+		
+		@Name("Commands")
+		public Commands commands = new Commands();
+		
+		public static class Commands {
+			@Name("Start / Stop Timer via Command")
+			@Comment("If enabled the timer will start when the command '/igt start' is executed instead at the start of the world and can be stopped with the command '/igt stop'")
 			public boolean startViaCommand = false;
+			@Name("Permit command to anyone")
+			@Comment("If enabled any player will be able to run the start and stop commands without need to be opped / with cheats enabled")
+			public boolean permitToAnyone = true;
 		}
 		
 		@Name("Real Time")
 		public RealTime realTime = new RealTime();
 	
-		public static class RealTime{
+		public static class RealTime {
 			@Name("Show Real Time")
 			@Comment("Makes the string on top left corner show real life time. If this is true, the in-game-timer will no longer be visible. In 'format' you can even add day, month and year.")
 			public boolean showRealTime = false;

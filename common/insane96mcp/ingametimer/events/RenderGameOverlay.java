@@ -33,12 +33,12 @@ public class RenderGameOverlay {
 			finalString = format.format(date);
 		}
 		else {
-			long actualTime = time - timeOffset;
+			//long actualTime = time - timeOffset;
 			if (Properties.config.general.showText)
 				finalString += "In-Game Timer: ";
 			
 			if (Properties.config.general.showTime)
-				finalString += FormatTime(actualTime);
+				finalString += FormatTime(time);
 			
 			if (Properties.config.general.showTicks)
 				finalString += String.format("(%d)", player.world.getTotalWorldTime());

@@ -1,0 +1,9 @@
+command.igt.usage=Usa '/igt start' per avviare il timer e '/igt stop' per fermarlo. Dopo che il timer è stato fermato può essere fatto ripartire senza perdere il tempo passato tra lo stop e il riavvio
+command.igt.already_started=Il timer è già stato avviato
+command.igt.already_stopped=Il timer è già stato fermato
+command.igt.not_yet_started=Il timer non è ancora stato avviato
+
+#Don't touch the mod name in parenthesis
+igt.timer_started=[In-Game Timer] Timer Avviato
+igt.timer_stopped=[In-Game Timer] Timer Fermato
+igt.timer_restarted=[In-Game Timer] Timer Riavviato

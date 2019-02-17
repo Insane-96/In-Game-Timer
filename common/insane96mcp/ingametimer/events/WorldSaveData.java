@@ -18,14 +18,25 @@ public class WorldSaveData extends WorldSavedData {
 		super(name);
 	}
 	
-	private long timeOffset = 0;
+	private long timeStart = 0;
 	
-	public long getTimeOffset() {
-		return this.timeOffset;
+	public long getTimeStart() {
+		return this.timeStart;
 	}
 	
-	public void setTimeOffset(long timeOffset) {
-		this.timeOffset = timeOffset;
+	public void setTimeStart(long timeOffset) {
+		this.timeStart = timeOffset;
+		markDirty();
+	}
+	
+	private long timeStop = 0;
+	
+	public long getTimeStop() {
+		return this.timeStop;
+	}
+	
+	public void setTimeStop(long timeStop) {
+		this.timeStop = timeStop;
 		markDirty();
 	}
 	
@@ -43,12 +54,14 @@ public class WorldSaveData extends WorldSavedData {
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
-		setTimeOffset(nbt.getLong("timeOffset"));
+		setTimeStart(nbt.getLong("timeOffset"));
+		setTimeStop(nbt.getLong("timeStop"));
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		compound.setLong("timeOffset", this.timeOffset);
+		compound.setLong("timeOffset", this.timeStart);
+		compound.setLong("timeStop", this.timeStop);
 		return compound;
 	}
 

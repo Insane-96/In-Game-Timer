@@ -19,13 +19,24 @@ public class LivingUpdate {
 		
 		if (event.getEntityLiving() instanceof EntityPlayerMP) {
 			EntityPlayerMP player = (EntityPlayerMP) event.getEntityLiving();
-			long worldTime = player.world.getTotalWorldTime();
-			long offset = 0;
-			if (Properties.config.general.startViaCommand) {
-				long timeOffset = WorldSaveData.get(player.world).getTimeOffset();
-				offset = timeOffset == 0 ? worldTime : timeOffset;
+			long time;
+			if (Properties.config.commands.startViaCommand) {
+				long timeStart = WorldSaveData.get(player.world).getTimeStart();
+				long timeStop = WorldSaveData.get(player.world).getTimeStop();
+				if (timeStart == 0) {
+					time = 0;
+				}
+				else {
+					if (timeStop == 0)
+						time = player.world.getTotalWorldTime() - timeStart;
+					else 
+						time = timeStop - timeStart;
+				}
 			}
-			PacketHandler.SendToClient(new WorldTimeMessage(worldTime, offset), player);
+			else {
+				time = player.world.getTotalWorldTime();
+			}
+			PacketHandler.SendToClient(new WorldTimeMessage(time), player);
 		}
 	}
 }
