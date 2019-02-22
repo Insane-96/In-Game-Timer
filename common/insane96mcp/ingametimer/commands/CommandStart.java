@@ -43,10 +43,10 @@ public class CommandStart extends CommandBase {
 			throw new WrongUsageException(getUsage(sender), new Object[0]);
 		}
 		
+		WorldSaveData savedData = WorldSaveData.get(sender.getEntityWorld());
+		long timeStart = savedData.getTimeStart();
+		long timeStop = savedData.getTimeStop();
 		if (args[0].equals("start")) {
-			WorldSaveData savedData = WorldSaveData.get(sender.getEntityWorld());
-			long timeStart = savedData.getTimeStart();
-			long timeStop = savedData.getTimeStop();
 			if (timeStart == 0) {
 				savedData.setTimeStart(sender.getEntityWorld().getTotalWorldTime());
 				server.getPlayerList().sendMessage(new TextComponentTranslation("igt.timer_started"));
@@ -62,9 +62,6 @@ public class CommandStart extends CommandBase {
 			}
 		}
 		else if (args[0].equals("stop")) {
-			WorldSaveData savedData = WorldSaveData.get(sender.getEntityWorld());
-			long timeStart = savedData.getTimeStart();
-			long timeStop = savedData.getTimeStop();
 			if (timeStart == 0) {
 				sender.sendMessage(new TextComponentTranslation("command.igt.not_yet_started"));
 			}
@@ -78,6 +75,10 @@ public class CommandStart extends CommandBase {
 				}
 			}
 		}
+		else if (args[0].equals("reset")) {
+			savedData.setTimeStart(0);
+			savedData.setTimeStop(0);
+		}
 		else {
 			throw new WrongUsageException(getUsage(sender), new Object[0]);
 		}
@@ -88,7 +89,7 @@ public class CommandStart extends CommandBase {
     {
         if (args.length == 1)
         {
-        	return getListOfStringsMatchingLastWord(args, new String[] {"start", "stop"});
+        	return getListOfStringsMatchingLastWord(args, new String[] {"start", "stop", "reset"});
         }
 		return Collections.emptyList();
     }
